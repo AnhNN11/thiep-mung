@@ -1,0 +1,83 @@
+{
+  "reference": "https://i.dlove.vn/index.html?fc8e1763db7249b6",
+  "music": {
+    "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/audio-mv9ff9kg-7edf2bd9.mp3",
+    "local": "/music/dlove-sample.mp3",
+    "bytes": 1261133,
+    "sha256": "cb1a5e75ffa225a9c916368533940e671518e4a2ae1ecc0f8069cb1a777f2b53",
+    "durationSeconds": 47.066848
+  },
+  "bouquetPhotos": [
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff31o-dfa55b96.webp",
+      "local": "/dlove/photos/bouquet-1.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff31n-3289da58.webp",
+      "local": "/dlove/photos/bouquet-2.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff311-d601e157.webp",
+      "local": "/dlove/photos/bouquet-3.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff4b2-12fbbfbf.webp",
+      "local": "/dlove/photos/bouquet-4.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff4bn-c755de6e.webp",
+      "local": "/dlove/photos/bouquet-5.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff4no-4d158d95.webp",
+      "local": "/dlove/photos/bouquet-6.webp"
+    }
+  ],
+  "rainPhotos": [
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff5ct-de6b308e.webp",
+      "local": "/dlove/photos/memory-1.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff5gb-cc2c8ac1.webp",
+      "local": "/dlove/photos/memory-2.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff5p4-dc653f03.webp",
+      "local": "/dlove/photos/memory-3.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff6bw-67edccaa.webp",
+      "local": "/dlove/photos/memory-4.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff6ga-62fbedfb.webp",
+      "local": "/dlove/photos/memory-5.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff6qw-732edd32.webp",
+      "local": "/dlove/photos/memory-6.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff7kq-a2e6d362.webp",
+      "local": "/dlove/photos/memory-7.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff7m4-cb0fa0f4.webp",
+      "local": "/dlove/photos/memory-8.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff7sy-b5df609a.webp",
+      "local": "/dlove/photos/memory-9.webp"
+    },
+    {
+      "source": "https://cdn.dlove.vn/uploads/photobouquet/email_cac40610c34a68307894cf4bf5683f97/img-mv9ff8oe-24f4ebb5.webp",
+      "local": "/dlove/photos/memory-10.webp"
+    }
+  ],
+  "artworkSources": [
+    "https://i.dlove.vn/assets/bouquet-intro/",
+    "https://i.dlove.vn/assets/letter-20-10/"
+  ],
+  "heart": "https://i.dlove.vn/models/heart.obj"
+}

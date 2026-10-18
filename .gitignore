@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+.data/
+output/
+output/dlove-*
+output/main-*.js
+output/config-*.js
+output/taiCauHinh-*.js
+output/templateConst-*.js
+output/envelopePreview-*.js
+output/reference*
+output/catalog-asset-manifest.json

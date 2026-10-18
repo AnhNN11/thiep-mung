@@ -1,0 +1,733 @@
+{
+  "schemaVersion": "1.1.0",
+  "scene": {
+    "id": "mid-autumn-intro-desktop",
+    "referenceCanvas": {
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777778,
+      "viewBox": "0 0 1920 1080",
+      "coordinateUnit": "reference-pixel"
+    },
+    "breakpoint": {
+      "minWidthPx": 900,
+      "recommendedMediaQuery": "(min-width: 900px) and (min-aspect-ratio: 4/3)"
+    },
+    "responsiveStrategy": {
+      "fit": "cover",
+      "alignment": "50% 50%",
+      "safeAreaNormalized": {
+        "x": 0.08,
+        "y": 0.03,
+        "width": 0.84,
+        "height": 0.92
+      },
+      "note": "Render all layers in one SVG viewBox 0 0 1920 1080. Scale the SVG as a single scene; never stretch layers independently."
+    },
+    "containsTextLayer": false,
+    "backgroundColor": "#050a14",
+    "interactionTarget": "full-moon",
+    "moonHint": {
+      "text": "Ấn giữ vào mặt trăng",
+      "baselineY": 466,
+      "fontSizePx": 21
+    }
+  },
+  "placementRules": {
+    "box": {
+      "description": "Render directly at boxPx."
+    },
+    "alpha-content-box": {
+      "description": "targetContentBoxPx describes the visible alpha content. Compensate for transparent padding using asset.alphaContentRectPx.",
+      "fit": "contain",
+      "formula": {
+        "scale": "min(target.width / alpha.width, target.height / alpha.height)",
+        "renderWidth": "asset.width * scale",
+        "renderHeight": "asset.height * scale",
+        "renderX": "target.x + (target.width - alpha.width * scale) / 2 - alpha.x * scale",
+        "renderY": "target.y + (target.height - alpha.height * scale) / 2 - alpha.y * scale"
+      }
+    }
+  },
+  "clipPaths": {
+    "window-aperture": {
+      "type": "svg-path",
+      "viewBox": "0 0 1920 1080",
+      "d": "M679.5 220.9 C708.9 126.5 801.9 65.6 926.7 61.4 C1095.7 53.0 1257.2 126.5 1350.3 239.8 C1450.6 357.3 1460.4 516.7 1404.1 638.4 C1338.0 776.9 1174.0 860.9 987.9 873.4 C801.9 883.9 630.5 810.5 527.7 688.8 C432.2 577.6 434.7 428.6 491.0 317.4 C532.6 252.4 601.2 218.8 679.5 220.9 Z",
+      "purpose": "Clip sky, stars, moon, mountains and the three lanterns inside the decorative window.",
+      "derivedFrom": "layout.json window-aperture, ánh xạ theo ô khung desktop (kéo giãn không đều)"
+    }
+  },
+  "layers": [
+    {
+      "id": "desktop-background",
+      "file": "00-desktop-background.webp",
+      "zIndex": 0,
+      "group": "outside",
+      "placement": {
+        "mode": "box",
+        "boxPx": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "asset": {
+        "width": 1672,
+        "height": 941
+      },
+      "animation": {
+        "preset": "none"
+      }
+    },
+    {
+      "id": "night-sky",
+      "file": "01-night-sky.webp",
+      "zIndex": 10,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "box",
+        "boxPx": {
+          "x": 421,
+          "y": 13,
+          "width": 1065,
+          "height": 864
+        }
+      },
+      "asset": {
+        "width": 1254,
+        "height": 1254
+      },
+      "animation": {
+        "preset": "slow-drift",
+        "translateXPx": [
+          -8,
+          8
+        ],
+        "durationSeconds": 20
+      }
+    },
+    {
+      "id": "stars",
+      "file": "03-stars.webp",
+      "zIndex": 20,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 515,
+          "y": 85,
+          "width": 835,
+          "height": 580
+        }
+      },
+      "asset": {
+        "width": 1254,
+        "height": 1254,
+        "alphaContentRectPx": {
+          "x": 196,
+          "y": 132,
+          "width": 916,
+          "height": 983
+        }
+      },
+      "animation": {
+        "preset": "twinkle",
+        "opacity": [
+          0.45,
+          1
+        ],
+        "durationSeconds": [
+          1.8,
+          4.2
+        ],
+        "staggered": true
+      }
+    },
+    {
+      "id": "full-moon",
+      "file": "02-full-moon.webp",
+      "zIndex": 30,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "interactive": {
+        "role": "button",
+        "action": "hold-to-enter",
+        "holdDurationMs": 900,
+        "hitSlopPx": 28,
+        "ariaLabel": "Giữ vào mặt trăng để bắt đầu"
+      },
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 548,
+          "y": 90,
+          "width": 375,
+          "height": 350
+        }
+      },
+      "asset": {
+        "width": 1262,
+        "height": 1246,
+        "alphaContentRectPx": {
+          "x": 101,
+          "y": 99,
+          "width": 1049,
+          "height": 1038
+        }
+      },
+      "animation": {
+        "preset": "glow-pulse",
+        "scale": [
+          1,
+          1.012
+        ],
+        "opacity": [
+          0.95,
+          1
+        ],
+        "durationSeconds": 5.5,
+        "transformOrigin": "50% 50%"
+      }
+    },
+    {
+      "id": "mountains",
+      "file": "04-mountains.webp",
+      "zIndex": 40,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 585,
+          "y": 480,
+          "width": 760,
+          "height": 230
+        }
+      },
+      "asset": {
+        "width": 1810,
+        "height": 869,
+        "alphaContentRectPx": {
+          "x": 35,
+          "y": 329,
+          "width": 1749,
+          "height": 269
+        }
+      },
+      "animation": {
+        "preset": "parallax-x",
+        "translateXPx": [
+          -9,
+          9
+        ],
+        "durationSeconds": 24
+      }
+    },
+    {
+      "id": "lantern-distant",
+      "file": "06-lantern-distant.webp",
+      "zIndex": 50,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 1017,
+          "y": 264,
+          "width": 50,
+          "height": 58
+        }
+      },
+      "asset": {
+        "width": 1240,
+        "height": 1268,
+        "alphaContentRectPx": {
+          "x": 160,
+          "y": 76,
+          "width": 1015,
+          "height": 1107
+        }
+      },
+      "animation": {
+        "preset": "lantern-float",
+        "translateYPx": [
+          -5,
+          5
+        ],
+        "rotateDegrees": [
+          -1,
+          1
+        ],
+        "durationSeconds": 4.8,
+        "delaySeconds": 1.1
+      }
+    },
+    {
+      "id": "lantern-small-right",
+      "file": "06-lantern-distant.webp",
+      "zIndex": 52,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 1228,
+          "y": 378,
+          "width": 92,
+          "height": 98
+        }
+      },
+      "asset": {
+        "width": 1240,
+        "height": 1268,
+        "alphaContentRectPx": {
+          "x": 160,
+          "y": 76,
+          "width": 1015,
+          "height": 1107
+        }
+      },
+      "animation": {
+        "preset": "lantern-float",
+        "translateYPx": [
+          -7,
+          7
+        ],
+        "rotateDegrees": [
+          -1.3,
+          1.3
+        ],
+        "durationSeconds": 4.2,
+        "delaySeconds": 0.6
+      }
+    },
+    {
+      "id": "lantern-medium",
+      "file": "06-lantern-distant.webp",
+      "zIndex": 54,
+      "group": "window-content",
+      "clipPath": "window-aperture",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 982,
+          "y": 476,
+          "width": 172,
+          "height": 182
+        }
+      },
+      "asset": {
+        "width": 1240,
+        "height": 1268,
+        "alphaContentRectPx": {
+          "x": 160,
+          "y": 76,
+          "width": 1015,
+          "height": 1107
+        }
+      },
+      "animation": {
+        "preset": "lantern-float",
+        "translateYPx": [
+          -8,
+          8
+        ],
+        "rotateDegrees": [
+          -1.2,
+          1.2
+        ],
+        "durationSeconds": 5.1,
+        "delaySeconds": 0.2
+      }
+    },
+    {
+      "id": "window-frame",
+      "file": "05-window-frame.webp",
+      "zIndex": 60,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box-stretch",
+        "targetContentBoxPx": {
+          "x": 420,
+          "y": 0,
+          "width": 1060,
+          "height": 895
+        },
+        "note": "Kéo phần hình nhìn thấy đúng bằng targetContentBoxPx (không giữ tỉ lệ) để khớp master 16:9"
+      },
+      "asset": {
+        "width": 1254,
+        "height": 1254,
+        "alphaContentRectPx": {
+          "x": 57,
+          "y": 63,
+          "width": 1140,
+          "height": 1123
+        }
+      },
+      "animation": {
+        "preset": "none"
+      }
+    },
+    {
+      "id": "lantern-large-over-frame",
+      "file": "06-lantern-distant.webp",
+      "zIndex": 70,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 1154,
+          "y": 42,
+          "width": 286,
+          "height": 272
+        }
+      },
+      "asset": {
+        "width": 1240,
+        "height": 1268,
+        "alphaContentRectPx": {
+          "x": 160,
+          "y": 76,
+          "width": 1015,
+          "height": 1107
+        }
+      },
+      "animation": {
+        "preset": "lantern-float",
+        "translateYPx": [
+          -10,
+          10
+        ],
+        "rotateDegrees": [
+          -1,
+          1
+        ],
+        "durationSeconds": 5.8,
+        "delaySeconds": 0
+      }
+    },
+    {
+      "id": "cloud-left-desktop",
+      "file": "10-cloud-left-desktop.webp",
+      "zIndex": 80,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 65,
+          "y": 280,
+          "width": 490,
+          "height": 92
+        }
+      },
+      "asset": {
+        "width": 2103,
+        "height": 748,
+        "alphaContentRectPx": {
+          "x": 168,
+          "y": 237,
+          "width": 1624,
+          "height": 238
+        }
+      },
+      "animation": {
+        "preset": "cloud-drift",
+        "translateXPx": [
+          -8,
+          8
+        ],
+        "durationSeconds": 9
+      }
+    },
+    {
+      "id": "cloud-right-desktop",
+      "file": "11-cloud-right-desktop.webp",
+      "zIndex": 81,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 1305,
+          "y": 485,
+          "width": 535,
+          "height": 112
+        }
+      },
+      "asset": {
+        "width": 2172,
+        "height": 724,
+        "alphaContentRectPx": {
+          "x": 612,
+          "y": 194,
+          "width": 1498,
+          "height": 506
+        }
+      },
+      "animation": {
+        "preset": "cloud-drift",
+        "translateXPx": [
+          8,
+          -8
+        ],
+        "durationSeconds": 10
+      }
+    },
+    {
+      "id": "osmanthus-branch-desktop",
+      "file": "12-branch-desktop.webp",
+      "zIndex": 90,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": -18,
+          "y": 320,
+          "width": 1690,
+          "height": 630
+        }
+      },
+      "asset": {
+        "width": 1983,
+        "height": 793,
+        "alphaContentRectPx": {
+          "x": 0,
+          "y": 23,
+          "width": 1941,
+          "height": 741
+        }
+      },
+      "animation": {
+        "preset": "branch-sway",
+        "rotateDegrees": [
+          -0.25,
+          0.25
+        ],
+        "durationSeconds": 8,
+        "transformOrigin": "3% 38%"
+      }
+    },
+    {
+      "id": "jade-rabbit",
+      "file": "11-rabbit.webp",
+      "zIndex": 100,
+      "group": "outside",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 640,
+          "y": 502,
+          "width": 190,
+          "height": 244
+        }
+      },
+      "asset": {
+        "width": 1292,
+        "height": 1218,
+        "alphaContentRectPx": {
+          "x": 161,
+          "y": 120,
+          "width": 931,
+          "height": 1036
+        }
+      },
+      "animation": {
+        "preset": "rabbit-breathe",
+        "translateYPx": [
+          0,
+          -2.5
+        ],
+        "scale": [
+          1,
+          1.006
+        ],
+        "durationSeconds": 3.6,
+        "transformOrigin": "50% 100%"
+      }
+    },
+    {
+      "id": "petal-template",
+      "file": "12-single-petal.webp",
+      "zIndex": 110,
+      "group": "particles",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 360,
+          "y": 785,
+          "width": 25,
+          "height": 38
+        }
+      },
+      "asset": {
+        "width": 1254,
+        "height": 1254,
+        "alphaContentRectPx": {
+          "x": 364,
+          "y": 266,
+          "width": 500,
+          "height": 659
+        }
+      },
+      "repeat": {
+        "recommendedCount": 14,
+        "areaPx": {
+          "x": 120,
+          "y": 690,
+          "width": 1640,
+          "height": 370
+        },
+        "randomScale": [
+          0.35,
+          1
+        ],
+        "randomRotationDegrees": [
+          0,
+          360
+        ]
+      },
+      "animation": {
+        "preset": "petal-fall",
+        "translateYPx": [
+          0,
+          200
+        ],
+        "translateXPx": [
+          -35,
+          35
+        ],
+        "rotateDegrees": [
+          0,
+          260
+        ],
+        "durationSeconds": [
+          6,
+          11
+        ],
+        "staggered": true
+      }
+    },
+    {
+      "id": "flower-template",
+      "file": "13-single-flower.webp",
+      "zIndex": 111,
+      "group": "particles",
+      "placement": {
+        "mode": "alpha-content-box",
+        "targetContentBoxPx": {
+          "x": 1010,
+          "y": 890,
+          "width": 34,
+          "height": 34
+        }
+      },
+      "asset": {
+        "width": 1270,
+        "height": 1239,
+        "alphaContentRectPx": {
+          "x": 389,
+          "y": 361,
+          "width": 547,
+          "height": 512
+        }
+      },
+      "repeat": {
+        "recommendedCount": 8,
+        "areaPx": {
+          "x": 180,
+          "y": 670,
+          "width": 1500,
+          "height": 390
+        },
+        "randomScale": [
+          0.35,
+          0.85
+        ],
+        "randomRotationDegrees": [
+          0,
+          360
+        ]
+      },
+      "animation": {
+        "preset": "flower-fall",
+        "translateYPx": [
+          0,
+          175
+        ],
+        "translateXPx": [
+          -28,
+          28
+        ],
+        "rotateDegrees": [
+          0,
+          190
+        ],
+        "durationSeconds": [
+          7,
+          12
+        ],
+        "staggered": true
+      }
+    }
+  ],
+  "breakpointUsage": {
+    "desktop": "Use this file when viewport is at least 900px and landscape.",
+    "mobile": "Keep the existing portrait layout.json below 900px or in portrait orientation.",
+    "transition": "Switch scene data at a breakpoint; do not animate coordinates between portrait and landscape layouts."
+  },
+  "implementationNotes": [
+    "Render layers in ascending zIndex order.",
+    "All window-content layers must be clipped by window-aperture.",
+    "Do not clip the large lantern, clouds, branch or rabbit.",
+    "The moon is the only long-press interaction target; enlarge its invisible hit area without enlarging the artwork.",
+    "No title layer is included.",
+    "Disable loops when prefers-reduced-motion is reduce."
+  ],
+  "bloomSpots": [
+    {
+      "x": 150,
+      "y": 600
+    },
+    {
+      "x": 345,
+      "y": 645
+    },
+    {
+      "x": 480,
+      "y": 735
+    },
+    {
+      "x": 550,
+      "y": 780
+    },
+    {
+      "x": 780,
+      "y": 825
+    },
+    {
+      "x": 895,
+      "y": 790
+    },
+    {
+      "x": 1090,
+      "y": 835
+    },
+    {
+      "x": 1240,
+      "y": 825
+    },
+    {
+      "x": 1435,
+      "y": 805
+    },
+    {
+      "x": 1525,
+      "y": 790
+    }
+  ],
+  "fallFloor": 1060
+}

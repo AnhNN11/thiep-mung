@@ -1,0 +1,156 @@
+{
+  "success": true,
+  "data": {
+    "configVersion": 1,
+    "title": "Vườn hoa DLove",
+    "intro": {
+      "headline": "Cậu đến rồi!",
+      "subtitle": "Có một khu vườn nhỏ,\nđang đợi bạn ghé thăm.",
+      "buttonLabel": "Cùng nhau khám phá nhé",
+      "occasion": ""
+    },
+    "people": [
+      {
+        "id": "garden-person-01",
+        "name": "Dương Thị Mỹ Thu",
+        "image": "/dlove/garden/person-01.webp",
+        "original": "/dlove/garden/original-01.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Dương Thị Mỹ Thu"
+      },
+      {
+        "id": "garden-person-02",
+        "name": "Thùy Dương",
+        "image": "/dlove/garden/person-02.webp",
+        "original": "/dlove/garden/original-02.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Thùy Dương"
+      },
+      {
+        "id": "garden-person-03",
+        "name": "Phương Thảo",
+        "image": "/dlove/garden/person-03.webp",
+        "original": "/dlove/garden/original-03.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Phương Thảo"
+      },
+      {
+        "id": "garden-person-04",
+        "name": "Hồng Vân",
+        "image": "/dlove/garden/person-04.webp",
+        "original": "/dlove/garden/original-04.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Hồng Vân"
+      },
+      {
+        "id": "garden-person-05",
+        "name": "Thanh Trúc",
+        "image": "/dlove/garden/person-05.webp",
+        "original": "/dlove/garden/original-05.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Thanh Trúc"
+      },
+      {
+        "id": "garden-person-06",
+        "name": "Lan anh",
+        "image": "/dlove/garden/person-06.webp",
+        "original": "/dlove/garden/original-06.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Lan anh"
+      },
+      {
+        "id": "garden-person-07",
+        "name": "Ngọc Nhi",
+        "image": "/dlove/garden/person-07.webp",
+        "original": "/dlove/garden/original-07.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Ngọc Nhi"
+      },
+      {
+        "id": "garden-person-08",
+        "name": "Khánh Ngọc",
+        "image": "/dlove/garden/person-08.webp",
+        "original": "/dlove/garden/original-08.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Khánh Ngọc"
+      },
+      {
+        "id": "garden-person-09",
+        "name": "Mỹ Linh",
+        "image": "/dlove/garden/person-09.webp",
+        "original": "/dlove/garden/original-09.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Mỹ Linh"
+      },
+      {
+        "id": "garden-person-10",
+        "name": "Ngọc Ánh",
+        "image": "/dlove/garden/person-10.webp",
+        "original": "/dlove/garden/original-10.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Ngọc Ánh"
+      },
+      {
+        "id": "garden-person-11",
+        "name": "Yến Nhi",
+        "image": "/dlove/garden/person-11.webp",
+        "original": "/dlove/garden/original-11.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Yến Nhi"
+      },
+      {
+        "id": "garden-person-12",
+        "name": "Trâm Anh",
+        "image": "/dlove/garden/person-12.webp",
+        "original": "/dlove/garden/original-12.webp",
+        "wish": "Chúc mừng ngày Phụ nữ Việt Nam 20/10, Trâm Anh"
+      }
+    ],
+    "enableBouquet": true,
+    "enableMemories": true,
+    "memories": {
+      "title": "Những ngày mình bên nhau",
+      "buttonLabel": "Miền ký ức",
+      "photos": [
+        {
+          "id": "garden-memory-01",
+          "image": "/dlove/garden/memory-01.webp",
+          "width": 735,
+          "height": 555,
+          "alt": ""
+        },
+        {
+          "id": "garden-memory-02",
+          "image": "/dlove/garden/memory-02.webp",
+          "width": 736,
+          "height": 552,
+          "alt": ""
+        },
+        {
+          "id": "garden-memory-03",
+          "image": "/dlove/garden/memory-03.webp",
+          "width": 735,
+          "height": 1043,
+          "alt": ""
+        },
+        {
+          "id": "garden-memory-04",
+          "image": "/dlove/garden/memory-04.webp",
+          "width": 735,
+          "height": 501,
+          "alt": ""
+        },
+        {
+          "id": "garden-memory-05",
+          "image": "/dlove/garden/memory-05.webp",
+          "width": 675,
+          "height": 1200,
+          "alt": ""
+        }
+      ]
+    },
+    "enableLetter": true,
+    "letter": {
+      "title": "Gửi tới các cô gái xinh đẹp của 10a5,",
+      "opening": "",
+      "text": "Chúc các bạn có một ngày 20/10 thật nhiều niềm vui, nhận được thật nhiều hoa, quà và những lời chúc ngọt ngào. Mong rằng mỗi ngày đến trường của các bạn đều là một ngày vui. Và chặng đường sắp tới của chúng ta sẽ có thật nhiều kỉ niệm đẹp cùng nhau",
+      "signoff": "",
+      "sender": "",
+      "date": "",
+      "envelopeLine": "Một lá thư dành riêng cho bạn",
+      "buttonLabel": "Lá thư"
+    },
+    "bgMusic": "/dlove/garden/background-music.mp3",
+    "showWatermark": false
+  },
+  "source": "https://i.dlove.vn/vuon.html?ac8fb44238066def"
+}
