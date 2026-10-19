@@ -2,9 +2,11 @@
 
 ## Thiệp Khoa Tin học và Ngoại ngữ
 
-`public/dedications/faculty-20-10/`: ảnh cá nhân do người dùng cung cấp ngày 19/10/2026. Bốn ảnh `photo-2.webp` đến `photo-5.webp` giữ nguyên nội dung, xoay theo EXIF và tối ưu WebP; không nhúng lại EXIF. `teacher-1-cutout.webp` tách từ DSCF7656.JPG bằng ImageGen tích hợp, không phải ảnh cắt bằng công cụ hình học. Prompt: “Isolate only the adult woman on the right, remove the man and entire background, preserve identity, facial features, uniform, jewelry and pose, minimal completion of the occluded clothing edge, genuine transparent alpha, no other person, no text or shadow.” Có thể có khác biệt nhỏ do xử lý sinh ảnh.
+`public/dedications/faculty-20-10/`: ảnh cá nhân do người dùng cung cấp ngày 19/10/2026. Năm ảnh `photo-2.webp` đến `photo-6.webp` giữ nguyên nội dung, xoay theo EXIF và tối ưu WebP; không nhúng lại EXIF. Ảnh thứ sáu bổ sung từ ảnh cô cầm bó hoa được gửi trong lượt review local. `teacher-1-portrait.webp` là bản ImageGen tích hợp chỉnh sửa ảnh DSCF7656.JPG: bỏ người đứng cạnh, khôi phục nền sân trường và giữ ảnh cô Hà Thi có nền trong khung đồng bộ. Bản cutout trước đó được giữ làm nguồn lưu trữ, không dùng trong thiệp. Prompt đầy đủ ở README trong thư mục tài nguyên; ảnh xử lý AI có thể có khác biệt nhỏ.
 
-Cờ Việt Nam vẽ SVG bằng mã: nền đỏ, một sao vàng năm cánh và ánh vải lụa. QR tạo cục bộ bằng `qrcode`, mức sửa lỗi H; các bản PNG mã riêng và bảng để in đều được giải mã lại bằng `jsqr` để xác nhận URL. `scripts/prepare-faculty-gift.mjs` là công cụ chuẩn bị asset trên máy nguồn; không cần chạy lại khi clone hoặc deploy vì các asset đã được commit.
+Bướm bay dùng lại `public/dlove/bouquet/butterfly.webp`, hoạt ảnh đường bay và vỗ cánh bằng CSS; không ghép thêm hoặc chỉnh sửa nội dung ảnh gốc các cô. Có 18 bướm trên máy tính, 12 trên điện thoại, giảm chuyển động theo tùy chọn hệ thống.
+
+Cờ Việt Nam vẽ SVG bằng mã: nền đỏ, một sao vàng năm cánh và ánh vải lụa; chỉ giữ ở đầu bó hoa, lá thư và bảng QR, không xuất hiện trong mưa ảnh. Thiệp có 33 câu chúc bay và 8 lời chúc lớn luân phiên. QR tạo cục bộ bằng `qrcode`, mức sửa lỗi H; các bản PNG mã riêng và bảng để in đều được giải mã lại bằng `jsqr` để xác nhận URL. `scripts/prepare-faculty-gift.mjs` là công cụ chuẩn bị asset trên máy nguồn; không cần chạy lại khi clone hoặc deploy vì các asset đã được commit.
 
 ## Ảnh hoa
 

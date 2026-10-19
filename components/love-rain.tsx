@@ -16,6 +16,7 @@ export function LoveRain({
   messages,
   direction = "down",
   hearts = true,
+  appearance,
 }: {
   started: boolean;
   paused: boolean;
@@ -23,6 +24,7 @@ export function LoveRain({
   messages: string[];
   direction?: "up" | "down";
   hearts?: boolean;
+  appearance?: "tribute";
 }) {
   const mount = useRef<HTMLDivElement>(null),
     start = useRef(started),
@@ -57,6 +59,7 @@ export function LoveRain({
       if (disposed) return;
       const mobile = host!.clientWidth < 700,
         reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const tribute = appearance === "tribute";
       const renderer = new T.WebGLRenderer({
         antialias: false,
         alpha: false,
@@ -72,7 +75,7 @@ export function LoveRain({
         "Không gian mưa lời chúc, ảnh kỷ niệm và trái tim",
       );
       const scene = new T.Scene();
-      scene.background = new T.Color("#000");
+      scene.background = new T.Color(tribute ? "#130d16" : "#000");
       const camera = new T.PerspectiveCamera(100, 1, 0.1, 500);
       camera.position.set(-10, 0, 30);
       camera.lookAt(0, 0, 0);
@@ -92,7 +95,7 @@ export function LoveRain({
       composer.addPass(new RenderPass(scene, camera));
       const bloom = new UnrealBloomPass(
         new T.Vector2(512, 512),
-        mobile ? 0.42 : 0.7,
+        tribute ? 0.28 : mobile ? 0.42 : 0.7,
         0.4,
         mobile ? 0.22 : 0.1,
       );
@@ -146,8 +149,8 @@ export function LoveRain({
           kind,
         });
       };
-      const columns = mobile ? 14 : 18,
-        rows = mobile ? 7 : 9;
+      const columns = tribute ? (mobile ? 8 : 10) : mobile ? 14 : 18,
+        rows = tribute ? 6 : mobile ? 7 : 9;
       for (let row = 0; row < rows; row++)
         for (let col = 0; col < columns; col++) {
           const value = messages[(row * columns + col) % messages.length];
@@ -155,20 +158,31 @@ export function LoveRain({
           let wrapped = "";
           words.forEach((word, index) => {
             wrapped +=
-              (index && index % 8 === 0 ? "\n" : index ? " " : "") + word;
+              (index && index % (tribute ? 5 : 8) === 0
+                ? "\n"
+                : index
+                  ? " "
+                  : "") + word;
           });
           const text = new Text();
           text.text = wrapped;
           text.font = "/dlove/fonts/Mali.ttf";
-          text.fontSize = 1.5;
-          text.letterSpacing = -0.1;
+          text.fontSize = tribute ? 1.16 : 1.5;
+          text.letterSpacing = tribute ? 0.01 : -0.1;
+          if (tribute) {
+            text.maxWidth = 19;
+            text.lineHeight = 1.45;
+          }
           text.anchorX = "center";
           text.anchorY = "middle";
           text.textAlign = "center";
+          const textColor = tribute
+            ? ["#f5c8d9", "#e9cda2", "#e0c6e8"][(row + col) % 3]
+            : "#EE66A6";
           const material = new T.MeshStandardMaterial({
-            color: "#EE66A6",
-            emissive: "#EE66A6",
-            emissiveIntensity: 1.5,
+            color: textColor,
+            emissive: textColor,
+            emissiveIntensity: tribute ? 0.65 : 1.5,
             toneMapped: false,
             transparent: true,
             opacity: 0,
@@ -177,13 +191,13 @@ export function LoveRain({
           });
           materials.push(material);
           text.material = material;
-          const gap = value.length > 20 ? 6 : 3;
+          const gap = tribute ? 22 : value.length > 20 ? 6 : 3;
           add(
             text,
             material,
             (col - (columns - 1) / 2) * gap,
-            -10 + row * gap * 1.5,
-            7 + random() * 2,
+            tribute ? -24 + row * 12 : -10 + row * gap * 1.5,
+            tribute ? 3.2 + random() * 1.6 : 7 + random() * 2,
             "text",
           );
           text.sync();
@@ -237,8 +251,8 @@ export function LoveRain({
           const material = new T.MeshStandardMaterial({
             map: texture,
             emissiveMap: texture,
-            emissive: "#EE66A6",
-            emissiveIntensity: 0.4,
+            emissive: tribute ? "#ffffff" : "#EE66A6",
+            emissiveIntensity: tribute ? 0.25 : 0.4,
             toneMapped: false,
             transparent: true,
             opacity: 0,
@@ -251,7 +265,7 @@ export function LoveRain({
             material as Falling["material"],
             (col - 1.5) * 18,
             -10 + row * 10,
-            4 + random() * 5,
+            tribute ? 2.8 + random() * 2 : 4 + random() * 5,
             "photo",
           );
         }
@@ -290,9 +304,9 @@ export function LoveRain({
         for (let row = 0; row < 4; row++)
           for (let col = 0; col < 7; col++) {
             const material = new T.MeshStandardMaterial({
-              color: "#e62e00",
-              emissive: "#e62e00",
-              emissiveIntensity: 1.3,
+              color: tribute ? "#cf7f99" : "#e62e00",
+              emissive: tribute ? "#cf7f99" : "#e62e00",
+              emissiveIntensity: tribute ? 0.65 : 1.3,
               toneMapped: false,
               metalness: 0.1,
               roughness: 0.5,
@@ -308,7 +322,7 @@ export function LoveRain({
               material,
               (col - 3) * 7 + (random() - 0.5) * 3,
               -12 + row * 9,
-              5 + random() * 9,
+              tribute ? 3 + random() * 3 : 5 + random() * 9,
               "heart",
             );
           }

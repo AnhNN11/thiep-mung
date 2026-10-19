@@ -4,11 +4,12 @@ import type { BouquetPresentation } from "@/components/photo-bouquet";
 export const facultyGiftUrl = "https://thiep-mung-ebon.vercel.app/20-10";
 export const facultyAssetBase = "/dedications/faculty-20-10";
 export const facultyPhotos = [
-  `${facultyAssetBase}/teacher-1-cutout.webp`,
+  `${facultyAssetBase}/teacher-1-portrait.webp`,
   `${facultyAssetBase}/photo-2.webp`,
   `${facultyAssetBase}/photo-3.webp`,
   `${facultyAssetBase}/photo-4.webp`,
   `${facultyAssetBase}/photo-5.webp`,
+  `${facultyAssetBase}/photo-6.webp`,
 ];
 export const facultyGift: Gift = {
   theme: "bloom",
@@ -17,7 +18,7 @@ export const facultyGift: Gift = {
   title: "Rạng rỡ những người gieo tri thức",
   occasion: "Chúc mừng Ngày Phụ nữ Việt Nam 20/10",
   music: "dlove-original",
-  photos: [...facultyPhotos, `${facultyAssetBase}/co-viet-nam.svg`],
+  photos: [...facultyPhotos],
   message:
     "Kính gửi các Cô Khoa Tin học và Ngoại ngữ!\n\nNhân Ngày Phụ nữ Việt Nam 20/10, kính chúc các Cô luôn mạnh khỏe, hạnh phúc và rạng rỡ; vững vàng trong công tác, trọn vẹn niềm vui bên gia đình và những người thân yêu.\n\nCảm ơn các Cô đã tận tâm truyền đạt kiến thức, kiên nhẫn dìu dắt và thắp lên niềm say mê học tập. Từng bài giảng Tin học, từng giờ Ngoại ngữ đều mở thêm những cánh cửa tri thức và những cơ hội mới.\n\nTrong sắc xanh quân phục và bên bục giảng, các Cô luôn là những bông hoa đẹp: bản lĩnh, trí tuệ, nhân hậu và đầy nhiệt huyết.\n\nMong các Cô luôn giữ nụ cười tươi, sự bình an trong tâm hồn và niềm tự hào với những điều mình đang cống hiến.\n\nKính chúc các Cô một ngày 20/10 thật ý nghĩa!\n\nVới tất cả sự trân trọng và lòng biết ơn. 🇻🇳",
 };
@@ -28,8 +29,19 @@ export const facultyPresentation: BouquetPresentation = {
   signature: "Một bó hoa nhỏ · Một tấm lòng tri ân",
   envelopeTo: "Kính tặng các Cô",
   letterPhoto: `${facultyAssetBase}/co-viet-nam.svg`,
-  portraitKinds: ["cutout", "photo", "photo", "photo", "photo", "flag"],
-  rainPhotos: [...facultyPhotos, `${facultyAssetBase}/co-viet-nam.svg`],
+  portraitKinds: ["photo", "photo", "photo", "photo", "photo", "photo"],
+  butterflies: true,
+  rainPhotos: [...facultyPhotos],
+  featuredWishes: [
+    "Mong các Cô luôn rạng rỡ như những đóa hoa tháng Mười.",
+    "Mỗi ngày đến lớp là một ngày đầy niềm vui và cảm hứng.",
+    "Chúc các Cô thật nhiều sức khỏe, bình an và hạnh phúc.",
+    "Mong mọi tâm huyết đều đơm hoa, mọi ước mơ đều thành hiện thực.",
+    "Cảm ơn các Cô đã mở những cánh cửa tri thức cho bao thế hệ.",
+    "Chúc những nụ cười luôn ở lại, những điều dịu dàng luôn ghé qua.",
+    "Vững vàng trong công tác, ấm áp bên gia đình, trọn vẹn với đam mê.",
+    "Kính chúc các Cô một ngày 20/10 thật đẹp và đáng nhớ.",
+  ],
   messages: [
     "Chúc mừng Ngày Phụ nữ Việt Nam",
     "20/10 · Kính tặng các Cô",
@@ -41,5 +53,28 @@ export const facultyPresentation: BouquetPresentation = {
     "Tự hào Phụ nữ Việt Nam",
     "Trân trọng và biết ơn",
     "Mong các Cô luôn nở nụ cười",
+    "Ngày mới ngập tràn niềm vui",
+    "Mọi tâm huyết đều đơm hoa",
+    "Mọi ước mơ đều thành hiện thực",
+    "Bên gia đình luôn ấm áp",
+    "Mỗi ngày đều được yêu thương",
+    "Thanh xuân mãi ở trong tim",
+    "Tự tin tỏa sáng theo cách riêng",
+    "Hạnh phúc từ những điều bình dị",
+    "Gửi các Cô ngàn lời chúc đẹp",
+    "Cảm ơn những bài giảng tận tâm",
+    "Cảm ơn những năm tháng dìu dắt",
+    "Kiên nhẫn thắp sáng ước mơ",
+    "Mở những cánh cửa tri thức",
+    "Kết nối thế giới bằng ngôn ngữ",
+    "Ươm mầm sáng tạo mỗi ngày",
+    "Nhiệt huyết luôn đầy trong tim",
+    "Thành công trên mọi chặng đường",
+    "Đong đầy những kỷ niệm đẹp",
+    "An nhiên giữa bộn bề cuộc sống",
+    "Rạng ngời trong sắc xanh quân phục",
+    "Dịu dàng và thật nhiều bản lĩnh",
+    "Trọn vẹn với những điều đam mê",
+    "Tháng Mười gửi trọn lòng tri ân",
   ],
 };

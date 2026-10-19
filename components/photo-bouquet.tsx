@@ -9,6 +9,8 @@ import {
 } from "react";
 import { Volume2, VolumeX, RotateCcw } from "lucide-react";
 import { BouquetArt } from "./bouquet-art";
+import { FacultyButterflies } from "./faculty-butterflies";
+import { FacultyWishes } from "./faculty-wishes";
 import { BouquetLetter, EnvelopeFace } from "./bouquet-letter";
 import {
   bouquetParts,
@@ -33,6 +35,8 @@ export type BouquetPresentation = {
   envelopeTo?: string;
   letterPhoto?: string;
   portraitKinds?: ("photo" | "cutout" | "flag")[];
+  butterflies?: boolean;
+  featuredWishes?: string[];
 };
 export function PhotoBouquet({
   gift,
@@ -206,7 +210,9 @@ export function PhotoBouquet({
         onPause={() => setPlaying(false)}
         onError={() => setAudioError(true)}
       />
+      {presentation?.butterflies && <FacultyButterflies />}
       <LoveRain
+        appearance={presentation ? "tribute" : undefined}
         started={phase === "opening" || phase === "rain"}
         paused={letterOpen}
         photos={flyingPhotos}
@@ -221,6 +227,9 @@ export function PhotoBouquet({
               ])
         }
       />
+      {phase === "rain" && presentation?.featuredWishes?.length && (
+        <FacultyWishes wishes={presentation.featuredWishes} />
+      )}
       {phase !== "rain" && (
         <div
           className={`pb-intro ${phase === "opening" ? "pb-leaving" : ""}`}

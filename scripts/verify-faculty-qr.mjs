@@ -14,11 +14,12 @@ for (const file of ["ma-qr-thiep-20-10.png", "bang-qr-20-10.png"]) {
   console.log(`${file}: decoded ${decoded.data}`);
 }
 for (const file of [
-  "teacher-1-cutout.webp",
+  "teacher-1-portrait.webp",
   "photo-2.webp",
   "photo-3.webp",
   "photo-4.webp",
   "photo-5.webp",
+  "photo-6.webp",
 ]) {
   const meta = await sharp(`${folder}/${file}`).metadata();
   if (meta.exif) throw Error(`EXIF was retained: ${file}`);

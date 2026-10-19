@@ -75,6 +75,7 @@ export function BouquetArt({
           <div
             className={`pb-part pb-portrait is-${portraitKinds?.[i] || (/\/dlove\/(?:photos\/bouquet-|garden\/person-)/.test(images[i % images.length]) ? "cutout" : "photo")}`}
             key={`portrait-${i}`}
+            data-portrait-index={i}
             style={
               {
                 ...partStyle(slot),
@@ -86,7 +87,13 @@ export function BouquetArt({
               } as CSSProperties
             }
           >
-            <img src={images[i % images.length]} alt="" draggable={false} />
+            {portraitKinds?.[i] === "photo" ? (
+              <div className="pb-photo-frame">
+                <img src={images[i % images.length]} alt="" draggable={false} />
+              </div>
+            ) : (
+              <img src={images[i % images.length]} alt="" draggable={false} />
+            )}
           </div>
         );
       })}

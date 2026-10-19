@@ -5,6 +5,8 @@ declare module "troika-three-text" {
     font: string;
     fontSize: number;
     letterSpacing: number;
+    maxWidth: number;
+    lineHeight: number | string;
     anchorX: string | number;
     anchorY: string | number;
     textAlign: string;

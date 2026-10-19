@@ -20,11 +20,11 @@ for (let i = 1; i < files.length; i++) {
     .toFile(path.join(output, `photo-${i + 1}.webp`));
 }
 await sharp(
-  "C:/Users/admin/.codex/generated_images/01a14cc3-1508-7913-88b4-424f95b13173/exec-ad9297a6-2846-4043-9151-f4f06a5e327f.png",
+  "C:/Users/admin/.codex/generated_images/01a14cc3-1508-7913-88b4-424f95b13173/exec-5f807f68-e59d-4005-a60c-55ad7862bb35.png",
 )
   .resize({ height: 1400 })
   .webp({ quality: 92 })
-  .toFile(path.join(output, "teacher-1-cutout.webp"));
+  .toFile(path.join(output, "teacher-1-portrait.webp"));
 const flag = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600"><defs><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ef2639"/><stop offset=".5" stop-color="#c8102e"/><stop offset="1" stop-color="#8c0922"/></linearGradient><linearGradient id="silk"><stop stop-color="#fff" stop-opacity=".28"/><stop offset=".27" stop-color="#fff" stop-opacity="0"/><stop offset=".52" stop-color="#21000b" stop-opacity=".18"/><stop offset=".78" stop-color="#fff" stop-opacity=".17"/><stop offset="1" stop-color="#000" stop-opacity=".04"/></linearGradient><linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff3a6"/><stop offset=".55" stop-color="#ffde28"/><stop offset="1" stop-color="#f3b70e"/></linearGradient><clipPath id="cloth"><path d="M24 48 Q230 0 450 43 T876 35 L876 548 Q667 599 450 557 T24 563Z"/></clipPath></defs><g clip-path="url(#cloth)"><rect width="900" height="600" fill="url(#red)"/><path d="M450 125 491 251 624 251 517 329 558 455 450 377 342 455 383 329 276 251 409 251Z" fill="url(#gold)"/><rect width="900" height="600" fill="url(#silk)"/></g><path d="M24 48 Q230 0 450 43 T876 35" fill="none" stroke="#ffbdbe" stroke-opacity=".45" stroke-width="3"/></svg>`;
 await fs.writeFile(path.join(output, "co-viet-nam.svg"), flag);
 const url = "https://thiep-mung-ebon.vercel.app/20-10";
@@ -49,8 +49,5 @@ await sharp(Buffer.from(poster))
   .png()
   .withMetadata({ density: 300 })
   .toFile(path.join(output, "bang-qr-20-10.png"));
-await fs.writeFile(
-  path.join(output, "README.md"),
-  `# Thiệp 20/10 Khoa Tin học và Ngoại ngữ\n\nURL: ${url}\n\nẢnh do người dùng cung cấp. Ảnh photo-2..5 giữ từ file gốc, chỉ xoay theo EXIF và tối ưu WebP; EXIF không được nhúng lại. Ảnh teacher-1-cutout được tách bằng ImageGen tích hợp từ DSCF7656.JPG, là bản xử lý AI.\n\nPrompt: isolate only the woman on the right; remove man/background; preserve identity, uniform, pose; transparent alpha.\n\nCờ Việt Nam: SVG vẽ bằng mã, nền đỏ, một ngôi sao vàng năm cánh. QR tạo cục bộ bằng qrcode, ECC H; không gửi ảnh hoặc đường dẫn qua dịch vụ QR bên ngoài.\n`,
-);
+// Keep the reviewed provenance notes and final ImageGen prompt in README.md.
 console.log(`Assets and QR ready: ${output}`);
