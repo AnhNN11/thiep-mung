@@ -1,0 +1,40 @@
+.romantic-bouquet .romantic-heading-heart {
+  display: block;
+  font:
+    35px/1 Georgia,
+    serif;
+  color: #f7bacd;
+  text-shadow: 0 0 28px #f0a4ca66;
+  margin: 0 auto 5px;
+}
+.romantic-bouquet .faculty-heading > p {
+  letter-spacing: 1.8px;
+  font-size: 9px;
+}
+.romantic-bouquet .faculty-heading > h1 {
+  color: #ffdfeb;
+}
+.romantic-bouquet .pb-portrait[data-portrait-index="0"] .pb-photo-frame > img {
+  transform: none;
+}
+.romantic-bouquet .pb-photo-frame > img {
+  object-position: center 42%;
+}
+.romantic-bouquet .pb-glow {
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    #ed9bb72b,
+    #ae70ab24 32%,
+    transparent 68%
+  );
+}
+@media (max-height: 700px) {
+  .romantic-bouquet .romantic-heading-heart {
+    font-size: 25px;
+    margin-bottom: 3px;
+  }
+  .romantic-bouquet .faculty-heading > p {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+}

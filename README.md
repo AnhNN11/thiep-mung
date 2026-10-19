@@ -41,7 +41,11 @@ Nguồn đọc đối chiếu tại `output/` đã loại khỏi Git; ứng dụ
 
 ## Tạo và lưu quà
 
+Thiệp riêng dành cho người yêu nằm tại `/gui-em`, người nhận “Em yêu”, người gửi “Anh”. Cấu hình và lời nhắn ở `lib/romantic-gift.ts`; mười ảnh đóng gói sẵn trong `public/dedications/gui-em/` để hoạt động trên Vercel. Sáu ảnh xuất hiện trong bó hoa, cả mười ảnh ở mưa kỷ niệm; có nhạc, bướm, lời chúc luân phiên và lá thư tự cuộn. Đường dẫn không được liệt kê trong danh mục và có metadata `noindex`.
+
 Bảng QR chibi sáu cô có tại `/20-10/qr`, tải được tranh PNG nền trong suốt và bảng PNG để in/gửi. Tạo lại bố cục từ tranh đã có bằng `node scripts/create-faculty-chibi-qr.mjs`, kiểm tra bằng `npm run verify:faculty`.
+
+Lá thư `/20-10` dùng quốc kỳ nhỏ ở góc giấy, nội dung tự cuộn chậm sau khi mở. Cuộn tay/chạm vào nội dung sẽ tạm dừng tự cuộn 6 giây; có nút dừng/tiếp tục. Chế độ giảm chuyển động không tự bật cuộn, người đọc vẫn có thể bật bằng nút Tự cuộn.
 
 Thiệp riêng 20/10 của **Khoa Tin học và Ngoại ngữ** nằm tại `/20-10`; trang tải/in QR tại `/20-10/qr`. Nội dung và ảnh được đóng gói sẵn cùng source, không dùng API ghi file nên đường dẫn này hoạt động trên Vercel. QR trỏ tới `https://thiep-mung-ebon.vercel.app/20-10`. Tài nguyên ở `public/dedications/faculty-20-10/`; có PNG/SVG QR riêng và bảng QR để in. Kiểm tra mã bằng `npm run verify:faculty`. Thiệp có sáu ảnh các cô và bướm bay quanh bó hoa, tiếp tục bay khi vào mưa ảnh. Ảnh cô Hà Thi được ImageGen tích hợp bỏ người đứng cạnh và khôi phục nền sân trường, hiển thị trong cùng kiểu khung với các cô khác; năm ảnh còn lại chỉ xoay EXIF và tối ưu dung lượng. Mưa ảnh không chứa cờ, có 33 câu chúc và 8 lời chúc lớn luân phiên, tông hồng kem và chuyển động nhẹ.
 

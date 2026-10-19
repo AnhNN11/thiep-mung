@@ -1,5 +1,9 @@
 # Tài nguyên hình ảnh và âm thanh
 
+## Thiệp dành cho Em yêu
+
+`public/dedications/gui-em/photo-1.webp` đến `photo-10.webp`: mười ảnh người dùng gửi trong cuộc trò chuyện, giữ nội dung gốc, xoay EXIF khi cần và tối ưu WebP; không dùng AI chỉnh khuôn mặt, không nhúng EXIF vào ảnh xuất. Thiệp riêng `/gui-em` chọn ảnh 1, 4, 2, 8, 6, 10 vào sáu vị trí bó hoa, dùng toàn bộ mười ảnh trong mưa kỷ niệm. Nhạc dùng cùng track `dlove-original` của mẫu Bloom.
+
 ## Thiệp Khoa Tin học và Ngoại ngữ
 
 `public/dedications/faculty-20-10/`: ảnh cá nhân do người dùng cung cấp ngày 19/10/2026. Năm ảnh `photo-2.webp` đến `photo-6.webp` giữ nguyên nội dung, xoay theo EXIF và tối ưu WebP; không nhúng lại EXIF. Ảnh thứ sáu bổ sung từ ảnh cô cầm bó hoa được gửi trong lượt review local. `teacher-1-portrait.webp` là bản ImageGen tích hợp chỉnh sửa ảnh DSCF7656.JPG: bỏ người đứng cạnh, khôi phục nền sân trường và giữ ảnh cô Hà Thi có nền trong khung đồng bộ. Bản cutout trước đó được giữ làm nguồn lưu trữ, không dùng trong thiệp. Prompt đầy đủ ở README trong thư mục tài nguyên; ảnh xử lý AI có thể có khác biệt nhỏ.

@@ -26,6 +26,7 @@ const LoveRain = dynamic(
 );
 type Phase = "loading" | "flowers" | "revealing" | "ready" | "opening" | "rain";
 export type BouquetPresentation = {
+  variant?: "faculty" | "romantic";
   eyebrow: string;
   title: string;
   subtitle: string;
@@ -34,9 +35,14 @@ export type BouquetPresentation = {
   rainPhotos?: string[];
   envelopeTo?: string;
   letterPhoto?: string;
+  letterAutoScroll?: boolean;
+  letterCompactPhoto?: boolean;
   portraitKinds?: ("photo" | "cutout" | "flag")[];
   butterflies?: boolean;
   featuredWishes?: string[];
+  featuredEyebrow?: string;
+  featuredDedication?: string;
+  revealHint?: string;
 };
 export function PhotoBouquet({
   gift,
@@ -194,11 +200,13 @@ export function PhotoBouquet({
   }
   return (
     <section
-      className={`photo-bouquet ${embedded ? "pb-embedded" : ""} ${presentation ? "faculty-bouquet" : ""} pb-phase-${phase}`}
+      className={`photo-bouquet ${embedded ? "pb-embedded" : ""} ${presentation ? "faculty-bouquet" : ""} ${presentation?.variant === "romantic" ? "romantic-bouquet" : ""} pb-phase-${phase}`}
       aria-label={
-        presentation
-          ? "Thiệp chúc mừng 20/10 Khoa Tin học và Ngoại ngữ"
-          : "Bó hoa ảnh và mưa yêu thương"
+        presentation?.variant === "romantic"
+          ? `Bó hoa và lá thư dành riêng cho ${gift.recipient}`
+          : presentation
+            ? "Thiệp chúc mừng 20/10 Khoa Tin học và Ngoại ngữ"
+            : "Bó hoa ảnh và mưa yêu thương"
       }
     >
       <audio
@@ -228,7 +236,11 @@ export function PhotoBouquet({
         }
       />
       {phase === "rain" && presentation?.featuredWishes?.length && (
-        <FacultyWishes wishes={presentation.featuredWishes} />
+        <FacultyWishes
+          wishes={presentation.featuredWishes}
+          eyebrow={presentation.featuredEyebrow}
+          dedication={presentation.featuredDedication}
+        />
       )}
       {phase !== "rain" && (
         <div
@@ -237,11 +249,17 @@ export function PhotoBouquet({
         >
           {presentation && (
             <header className="faculty-heading">
-              <img
-                className="faculty-flag"
-                src="/dedications/faculty-20-10/co-viet-nam.svg"
-                alt="Quốc kỳ Việt Nam"
-              />
+              {presentation.variant === "romantic" ? (
+                <span className="romantic-heading-heart" aria-hidden="true">
+                  ♡
+                </span>
+              ) : (
+                <img
+                  className="faculty-flag"
+                  src="/dedications/faculty-20-10/co-viet-nam.svg"
+                  alt="Quốc kỳ Việt Nam"
+                />
+              )}
               <p>{presentation.eyebrow}</p>
               <h1>{presentation.title}</h1>
               <h2>{presentation.subtitle}</h2>
@@ -296,7 +314,8 @@ export function PhotoBouquet({
               ? "Đang chuẩn bị bó hoa…"
               : phase === "flowers"
                 ? presentation
-                  ? "Chạm để hé lộ những gương mặt thân thương"
+                  ? presentation.revealHint ||
+                    "Chạm để hé lộ những gương mặt thân thương"
                   : "Chạm vào bó hoa"
                 : phase === "ready"
                   ? presentation
@@ -348,6 +367,8 @@ export function PhotoBouquet({
       )}
       {letterOpen && (
         <BouquetLetter
+          autoScroll={presentation?.letterAutoScroll}
+          compactPhoto={presentation?.letterCompactPhoto}
           gift={gift}
           photo={
             presentation?.letterPhoto ||

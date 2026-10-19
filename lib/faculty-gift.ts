@@ -29,6 +29,8 @@ export const facultyPresentation: BouquetPresentation = {
   signature: "Một bó hoa nhỏ · Một tấm lòng tri ân",
   envelopeTo: "Kính tặng các Cô",
   letterPhoto: `${facultyAssetBase}/co-viet-nam.svg`,
+  letterAutoScroll: true,
+  letterCompactPhoto: true,
   portraitKinds: ["photo", "photo", "photo", "photo", "photo", "photo"],
   butterflies: true,
   rainPhotos: [...facultyPhotos],

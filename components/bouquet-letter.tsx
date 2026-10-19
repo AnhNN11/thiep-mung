@@ -60,14 +60,20 @@ export function BouquetLetter({
   photo,
   onClose,
   salutation,
+  autoScroll = false,
+  compactPhoto = false,
 }: {
   gift: Gift;
   photo: string;
   onClose: () => void;
   salutation?: string;
+  autoScroll?: boolean;
+  compactPhoto?: boolean;
 }) {
   const dialog = useRef<HTMLDialogElement>(null),
-    area = useRef<HTMLDivElement>(null);
+    area = useRef<HTMLDivElement>(null),
+    copy = useRef<HTMLDivElement>(null),
+    resumeScrollAt = useRef(0);
   const [stage, setStage] = useState<"closed" | "opening" | "open" | "closing">(
     "closed",
   );
@@ -76,6 +82,7 @@ export function BouquetLetter({
     [leaving, setLeaving] = useState(false);
   const [scale, setScale] = useState(1),
     [typed, setTyped] = useState(0);
+  const [scrollEnabled, setScrollEnabled] = useState(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]),
     finishTyping = useRef(false);
   const text = gift.message;
@@ -124,6 +131,42 @@ export function BouquetLetter({
     }, speed);
     return () => clearInterval(timer);
   }, [stage, text]);
+  useEffect(() => {
+    if (stage !== "open") return;
+    if (copy.current) copy.current.scrollTop = 0;
+    resumeScrollAt.current = performance.now() + 1800;
+    setScrollEnabled(
+      autoScroll &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, [stage, autoScroll]);
+  useEffect(() => {
+    const element = copy.current;
+    if (stage !== "open" || !scrollEnabled || focusPhoto || !element) return;
+    let frame = 0;
+    let previous = performance.now();
+    let position = element.scrollTop;
+    const tick = (now: number) => {
+      const delta = Math.min(now - previous, 50);
+      previous = now;
+      if (document.hidden || now < resumeScrollAt.current) {
+        position = element.scrollTop;
+      } else {
+        // Retain fractional pixels so scrolling stays smooth on every display.
+        position = Math.min(
+          Math.max(0, element.scrollHeight - element.clientHeight),
+          position + (delta / 1000) * 18,
+        );
+        element.scrollTop = position;
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [stage, scrollEnabled, focusPhoto]);
+  function pauseForReading() {
+    resumeScrollAt.current = performance.now() + 6000;
+  }
   function later(callback: () => void, delay: number) {
     timers.current.push(setTimeout(callback, delay));
   }
@@ -147,7 +190,7 @@ export function BouquetLetter({
   const blocks = text.slice(0, typed).split("\n");
   return (
     <dialog
-      className={`pb-letter-modal ${leaving ? "pb-letter-leaving" : ""}`}
+      className={`pb-letter-modal ${autoScroll ? "pb-letter-auto-scroll" : ""} ${compactPhoto ? "pb-letter-compact-photo" : ""} ${leaving ? "pb-letter-leaving" : ""}`}
       ref={dialog}
       aria-label="Lá thư dành riêng cho bạn"
       onCancel={(event) => {
@@ -197,8 +240,26 @@ export function BouquetLetter({
               />
               <div
                 className="pb-letter-copy"
+                ref={copy}
                 tabIndex={stage === "open" ? 0 : -1}
                 aria-label="Lời nhắn, cuộn để đọc tiếp"
+                onWheel={pauseForReading}
+                onTouchStart={pauseForReading}
+                onPointerDown={pauseForReading}
+                onKeyDown={(event) => {
+                  if (
+                    [
+                      "ArrowUp",
+                      "ArrowDown",
+                      "PageUp",
+                      "PageDown",
+                      "Home",
+                      "End",
+                      " ",
+                    ].includes(event.key)
+                  )
+                    pauseForReading();
+                }}
               >
                 <div className="pb-letter-copy-inner">
                   <h1>
@@ -215,24 +276,34 @@ export function BouquetLetter({
                   </div>
                 </div>
               </div>
-              <button
-                className="pb-letter-photo"
-                aria-label={focusPhoto ? "Trở lại đọc thư" : "Chạm để ngắm ảnh"}
-                aria-pressed={focusPhoto}
-                onClick={() => setFocusPhoto(!focusPhoto)}
-              >
+              {compactPhoto ? (
                 <img
-                  className="pb-photo-watercolor"
-                  src={`${base}/watercolor.webp`}
-                  alt=""
+                  className="pb-letter-emblem"
+                  src={photo}
+                  alt="Quốc kỳ Việt Nam"
                 />
-                <span className="pb-photo-viewport">
+              ) : (
+                <button
+                  className="pb-letter-photo"
+                  aria-label={
+                    focusPhoto ? "Trở lại đọc thư" : "Chạm để ngắm ảnh"
+                  }
+                  aria-pressed={focusPhoto}
+                  onClick={() => setFocusPhoto(!focusPhoto)}
+                >
                   <img
-                    src={photo}
-                    alt={`Ảnh kỷ niệm dành tặng ${gift.recipient}`}
+                    className="pb-photo-watercolor"
+                    src={`${base}/watercolor.webp`}
+                    alt=""
                   />
-                </span>
-              </button>
+                  <span className="pb-photo-viewport">
+                    <img
+                      src={photo}
+                      alt={`Ảnh kỷ niệm dành tặng ${gift.recipient}`}
+                    />
+                  </span>
+                </button>
+              )}
               <img
                 className="pb-paper-flower-front"
                 src={`${base}/flower-front.webp`}
@@ -264,9 +335,24 @@ export function BouquetLetter({
           <button onClick={open}>Chạm vào phong bì để mở thư</button>
         ) : (
           <>
-            <button onClick={() => setFocusPhoto(!focusPhoto)}>
-              {focusPhoto ? "Trở lại đọc thư" : "Chạm vào ảnh để ngắm thật gần"}
-            </button>
+            {!compactPhoto && (
+              <button onClick={() => setFocusPhoto(!focusPhoto)}>
+                {focusPhoto
+                  ? "Trở lại đọc thư"
+                  : "Chạm vào ảnh để ngắm thật gần"}
+              </button>
+            )}
+            {autoScroll && stage === "open" && (
+              <button
+                aria-pressed={scrollEnabled}
+                onClick={() => {
+                  resumeScrollAt.current = performance.now();
+                  setScrollEnabled(!scrollEnabled);
+                }}
+              >
+                {scrollEnabled ? "Dừng cuộn" : "Tự cuộn"}
+              </button>
+            )}
             {stage === "open" && typed < text.length && (
               <button
                 onClick={() => {

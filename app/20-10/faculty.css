@@ -21,13 +21,38 @@
   z-index: 5;
 }
 .faculty-flag {
-  width: 74px;
-  height: 49px;
+  width: 42px;
+  height: 28px;
   object-fit: contain;
   margin: 0 auto;
   filter: drop-shadow(0 5px 15px #b0273155);
   transform-origin: 10% 50%;
   animation: faculty-flag-wave 4.8s ease-in-out infinite;
+}
+.pb-letter-auto-scroll .pb-letter-copy-inner:before {
+  display: none;
+}
+.pb-letter-auto-scroll .pb-paper-flower-front {
+  width: 34%;
+  opacity: 0.48;
+  z-index: 2;
+}
+.pb-letter-auto-scroll .pb-letter-scene:not(.focus-photo) .pb-letter-photo {
+  top: 24px;
+  right: 30px;
+  width: 122px;
+  height: 98px;
+  min-height: 0;
+}
+.pb-letter-emblem {
+  position: absolute;
+  top: 42px;
+  right: 36px;
+  width: 98px;
+  height: 66px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
 }
 .faculty-heading > p {
   font:
@@ -311,8 +336,8 @@
     top: 27px;
   }
   .faculty-flag {
-    width: 85px;
-    height: 57px;
+    width: 48px;
+    height: 32px;
   }
   .faculty-bouquet .pb-intro {
     padding-top: 205px;
@@ -326,8 +351,8 @@
     top: 15px;
   }
   .faculty-flag {
-    width: 50px;
-    height: 33px;
+    width: 32px;
+    height: 21px;
   }
   .faculty-heading > p {
     font-size: 8px;
