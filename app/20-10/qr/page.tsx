@@ -9,15 +9,19 @@ export default function FacultyQrPage() {
   return (
     <main className="faculty-qr-page">
       <div className="faculty-qr-card">
-        <img
-          className="faculty-qr-flag"
-          src={`${facultyAssetBase}/co-viet-nam.svg`}
-          alt="Quốc kỳ Việt Nam"
-        />
-        <p className="faculty-qr-kicker">NGÀY PHỤ NỮ VIỆT NAM</p>
+        <p className="faculty-qr-kicker">
+          MỘT MÓN QUÀ NHỎ · NGÀN LỜI YÊU THƯƠNG
+        </p>
         <h1>20 · 10</h1>
         <h2>Kính tặng các Cô</h2>
         <p className="faculty-qr-department">Khoa Tin học và Ngoại ngữ</p>
+        <img
+          className="faculty-qr-chibi"
+          src={`${facultyAssetBase}/chibi-cac-co.webp`}
+          alt="Tranh chibi sáu cô Khoa Tin học và Ngoại ngữ trong quân phục xanh, cùng hoa hồng và bướm"
+          width={1400}
+          height={933}
+        />
         <img
           className="faculty-qr-code"
           src={`${facultyAssetBase}/ma-qr-thiep-20-10.svg`}
@@ -28,8 +32,11 @@ export default function FacultyQrPage() {
           Mở thiệp ngay ↗
         </a>
         <div className="faculty-qr-downloads">
-          <a href={`${facultyAssetBase}/bang-qr-20-10.png`} download>
-            Tải bảng QR để in
+          <a href={`${facultyAssetBase}/bang-qr-20-10-chibi.png`} download>
+            Tải bảng QR chibi để in
+          </a>
+          <a href={`${facultyAssetBase}/chibi-cac-co.png`} download>
+            Tải tranh chibi
           </a>
           <a href={`${facultyAssetBase}/ma-qr-thiep-20-10.png`} download>
             Tải mã QR PNG

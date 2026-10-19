@@ -6,6 +6,8 @@
 
 Bướm bay dùng lại `public/dlove/bouquet/butterfly.webp`, hoạt ảnh đường bay và vỗ cánh bằng CSS; không ghép thêm hoặc chỉnh sửa nội dung ảnh gốc các cô. Có 18 bướm trên máy tính, 12 trên điện thoại, giảm chuyển động theo tùy chọn hệ thống.
 
+`chibi-cac-co.png` (nền trong suốt) và bản WebP được tạo bằng ImageGen tích hợp theo sáu ảnh các cô, minh họa chibi với quân phục xanh, hoa hồng và bướm. Đây là tranh cách điệu từ ảnh tham chiếu. Prompt đầy đủ ở `public/dedications/faculty-20-10/chibi-prompt.txt`. `bang-qr-20-10-chibi.png` và SVG là bố cục in 1600 × 2264 px do `scripts/create-faculty-chibi-qr.mjs` tạo; dùng nguyên mã QR SVG tạo cục bộ, không nhờ AI vẽ mã. `verify:faculty` kiểm tra bảng chibi cả kích thước gốc, 800px và 400px.
+
 Cờ Việt Nam vẽ SVG bằng mã: nền đỏ, một sao vàng năm cánh và ánh vải lụa; chỉ giữ ở đầu bó hoa, lá thư và bảng QR, không xuất hiện trong mưa ảnh. Thiệp có 33 câu chúc bay và 8 lời chúc lớn luân phiên. QR tạo cục bộ bằng `qrcode`, mức sửa lỗi H; các bản PNG mã riêng và bảng để in đều được giải mã lại bằng `jsqr` để xác nhận URL. `scripts/prepare-faculty-gift.mjs` là công cụ chuẩn bị asset trên máy nguồn; không cần chạy lại khi clone hoặc deploy vì các asset đã được commit.
 
 ## Ảnh hoa
