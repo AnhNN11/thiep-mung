@@ -1,5 +1,11 @@
 # Tài nguyên hình ảnh và âm thanh
 
+## Thiệp Khoa Tin học và Ngoại ngữ
+
+`public/dedications/faculty-20-10/`: ảnh cá nhân do người dùng cung cấp ngày 19/10/2026. Bốn ảnh `photo-2.webp` đến `photo-5.webp` giữ nguyên nội dung, xoay theo EXIF và tối ưu WebP; không nhúng lại EXIF. `teacher-1-cutout.webp` tách từ DSCF7656.JPG bằng ImageGen tích hợp, không phải ảnh cắt bằng công cụ hình học. Prompt: “Isolate only the adult woman on the right, remove the man and entire background, preserve identity, facial features, uniform, jewelry and pose, minimal completion of the occluded clothing edge, genuine transparent alpha, no other person, no text or shadow.” Có thể có khác biệt nhỏ do xử lý sinh ảnh.
+
+Cờ Việt Nam vẽ SVG bằng mã: nền đỏ, một sao vàng năm cánh và ánh vải lụa. QR tạo cục bộ bằng `qrcode`, mức sửa lỗi H; các bản PNG mã riêng và bảng để in đều được giải mã lại bằng `jsqr` để xác nhận URL. `scripts/prepare-faculty-gift.mjs` là công cụ chuẩn bị asset trên máy nguồn; không cần chạy lại khi clone hoặc deploy vì các asset đã được commit.
+
 ## Ảnh hoa
 
 File: `public/images/bouquet.png`. Tạo bằng công cụ ImageGen tích hợp, dùng cho hero trang chủ.

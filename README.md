@@ -41,6 +41,8 @@ Nguồn đọc đối chiếu tại `output/` đã loại khỏi Git; ứng dụ
 
 ## Tạo và lưu quà
 
+Thiệp riêng 20/10 của **Khoa Tin học và Ngoại ngữ** nằm tại `/20-10`; trang tải/in QR tại `/20-10/qr`. Nội dung và ảnh được đóng gói sẵn cùng source, không dùng API ghi file nên đường dẫn này hoạt động trên Vercel. QR trỏ tới `https://thiep-mung-ebon.vercel.app/20-10`. Tài nguyên ở `public/dedications/faculty-20-10/`; có PNG/SVG QR riêng và bảng QR để in. Kiểm tra mã bằng `npm run verify:faculty`. Ảnh chụp đôi được tách riêng người phụ nữ bằng ImageGen tích hợp; bốn ảnh còn lại chỉ xoay EXIF và tối ưu dung lượng.
+
 Có thể thay lời chúc, người gửi/nhận, ảnh và nhạc. Bó hoa tối đa 6 ảnh; mẫu khác tối đa 12. PNG/WebP giữ nền trong suốt; ảnh được giảm kích thước tại trình duyệt. Nhạc riêng tối đa 5 MB, phát sau tương tác, có nút bật/tắt.
 
 Quà lưu JSON tại `.data/gifts/`, link `/gift/<uuid>` và QR. Nháp/danh sách quà lưu localStorage. Link localhost mở trên máy chạy ứng dụng. Để gửi qua Internet cần Node.js, HTTPS và ổ lưu trữ bền vững; dùng database/object storage nếu serverless. Ai có link đều mở được. Chưa có đăng nhập hoặc thanh toán.

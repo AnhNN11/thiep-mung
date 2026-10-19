@@ -1,0 +1,109 @@
+.faculty-qr-page {
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 50% 0, #f8e6d2, #f2ece4 60%);
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+  color: #234636;
+  font-family: var(--font-body), sans-serif;
+}
+.faculty-qr-card {
+  width: min(620px, 100%);
+  text-align: center;
+  background: #fffdf7;
+  border: 1px solid #d6bc8c;
+  border-radius: 20px;
+  box-shadow: 0 20px 70px #76593512;
+  padding: 35px 25px;
+}
+.faculty-qr-flag {
+  width: 92px;
+  height: 62px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 18px;
+}
+.faculty-qr-kicker {
+  font-size: 10px;
+  letter-spacing: 2.4px;
+  color: #9d784e;
+}
+.faculty-qr-card h1 {
+  font:
+    80px/1.2 var(--font-serif),
+    Georgia,
+    serif;
+  margin: 15px 0 8px;
+}
+.faculty-qr-card h2 {
+  font:
+    27px/1.4 var(--font-serif),
+    Georgia,
+    serif;
+  margin: 0;
+}
+.faculty-qr-department {
+  font-size: 14px;
+  margin: 10px 0 22px;
+}
+.faculty-qr-code {
+  display: block;
+  width: min(320px, 85%);
+  height: auto;
+  margin: 0 auto 20px;
+  image-rendering: pixelated;
+}
+.faculty-qr-card > p:not([class]) {
+  font-size: 13px;
+  color: #5b6d5c;
+}
+.faculty-qr-open {
+  display: block;
+  color: #234636;
+  text-underline-offset: 5px;
+  font-size: 13px;
+  margin: 20px 0;
+}
+.faculty-qr-downloads {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 27px;
+}
+.faculty-qr-downloads a {
+  padding: 11px 13px;
+  border: 1px solid #d9c9aa;
+  border-radius: 6px;
+  color: #234636;
+  text-decoration: none;
+  font-size: 11px;
+  background: #fbf7ed;
+}
+.faculty-qr-downloads a:hover {
+  background: #eee4ce;
+}
+.faculty-qr-card > small {
+  display: block;
+  margin-top: 25px;
+  color: #9a8d77;
+  font-size: 10px;
+  word-break: break-all;
+}
+@media print {
+  .faculty-qr-page {
+    padding: 0;
+    background: white;
+  }
+  .faculty-qr-card {
+    border: 0;
+    box-shadow: none;
+  }
+  .faculty-qr-downloads,
+  .faculty-qr-open {
+    display: none;
+  }
+  .faculty-qr-code {
+    width: 95mm;
+  }
+}

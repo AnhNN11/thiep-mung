@@ -3,11 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import { X, RotateCcw } from "lucide-react";
 import type { Gift } from "@/lib/templates";
 const base = "/dlove/letter";
-function EnvelopeText({ occasion }: { occasion?: string }) {
+function EnvelopeText({
+  occasion,
+  salutation,
+}: {
+  occasion?: string;
+  salutation?: string;
+}) {
   return (
     <svg className="pb-envelope-text" viewBox="0 0 1349 859" aria-hidden="true">
       <text x="674.5" y="122" textAnchor="middle" className="pb-envelope-top">
-        Dành tặng em
+        {salutation || "Dành tặng em"}
       </text>
       <text
         x="674.5"
@@ -32,13 +38,19 @@ function EnvelopeText({ occasion }: { occasion?: string }) {
     </svg>
   );
 }
-export function EnvelopeFace({ occasion }: { occasion?: string }) {
+export function EnvelopeFace({
+  occasion,
+  salutation,
+}: {
+  occasion?: string;
+  salutation?: string;
+}) {
   return (
     <span className="pb-envelope-face">
       <img src={`${base}/sides.webp`} alt="" />
       <img src={`${base}/front.webp`} alt="" />
       <img src={`${base}/flap-blank.webp`} alt="" />
-      <EnvelopeText occasion={occasion} />
+      <EnvelopeText occasion={occasion} salutation={salutation} />
       <img className="pb-face-seal" src={`${base}/seal-dlove.webp`} alt="" />
     </span>
   );
@@ -47,10 +59,12 @@ export function BouquetLetter({
   gift,
   photo,
   onClose,
+  salutation,
 }: {
   gift: Gift;
   photo: string;
   onClose: () => void;
+  salutation?: string;
 }) {
   const dialog = useRef<HTMLDialogElement>(null),
     area = useRef<HTMLDivElement>(null);
@@ -157,7 +171,10 @@ export function BouquetLetter({
               <div className="pb-flap-rotate">
                 <div className="pb-flap-outside">
                   <img src={`${base}/flap-blank.webp`} alt="" />
-                  <EnvelopeText occasion={gift.occasion} />
+                  <EnvelopeText
+                    occasion={gift.occasion}
+                    salutation={salutation}
+                  />
                 </div>
                 <div className="pb-flap-inside" />
               </div>

@@ -23,12 +23,25 @@ const LoveRain = dynamic(
   { ssr: false },
 );
 type Phase = "loading" | "flowers" | "revealing" | "ready" | "opening" | "rain";
+export type BouquetPresentation = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  signature: string;
+  messages: string[];
+  rainPhotos?: string[];
+  envelopeTo?: string;
+  letterPhoto?: string;
+  portraitKinds?: ("photo" | "cutout" | "flag")[];
+};
 export function PhotoBouquet({
   gift,
   embedded = false,
+  presentation,
 }: {
   gift: Gift;
   embedded?: boolean;
+  presentation?: BouquetPresentation;
 }) {
   const [phase, setPhase] = useState<Phase>("loading");
   const [progress, setProgress] = useState(0);
@@ -51,7 +64,8 @@ export function PhotoBouquet({
   const usingSample = photos.every((photo) =>
     photo.startsWith("/dlove/photos/"),
   );
-  const flyingPhotos = usingSample ? sampleRainPhotos : photos;
+  const flyingPhotos =
+    presentation?.rainPhotos || (usingSample ? sampleRainPhotos : photos);
   const source =
     tracks.find((track) => track.id === gift.music)?.src ||
     (gift.music.startsWith("data:audio/")
@@ -176,8 +190,12 @@ export function PhotoBouquet({
   }
   return (
     <section
-      className={`photo-bouquet ${embedded ? "pb-embedded" : ""} pb-phase-${phase}`}
-      aria-label="Bó hoa ảnh và mưa yêu thương"
+      className={`photo-bouquet ${embedded ? "pb-embedded" : ""} ${presentation ? "faculty-bouquet" : ""} pb-phase-${phase}`}
+      aria-label={
+        presentation
+          ? "Thiệp chúc mừng 20/10 Khoa Tin học và Ngoại ngữ"
+          : "Bó hoa ảnh và mưa yêu thương"
+      }
     >
       <audio
         ref={audio}
@@ -193,9 +211,14 @@ export function PhotoBouquet({
         paused={letterOpen}
         photos={flyingPhotos}
         messages={
-          usingSample
+          presentation?.messages ||
+          (usingSample
             ? rainMessages
-            : [gift.title, ...rainMessages.slice(0, 5), `Gửi ${gift.recipient}`]
+            : [
+                gift.title,
+                ...rainMessages.slice(0, 5),
+                `Gửi ${gift.recipient}`,
+              ])
         }
       />
       {phase !== "rain" && (
@@ -203,8 +226,25 @@ export function PhotoBouquet({
           className={`pb-intro ${phase === "opening" ? "pb-leaving" : ""}`}
           style={{ "--hold-progress": progress } as CSSProperties}
         >
+          {presentation && (
+            <header className="faculty-heading">
+              <img
+                className="faculty-flag"
+                src="/dedications/faculty-20-10/co-viet-nam.svg"
+                alt="Quốc kỳ Việt Nam"
+              />
+              <p>{presentation.eyebrow}</p>
+              <h1>{presentation.title}</h1>
+              <h2>{presentation.subtitle}</h2>
+              <span>{presentation.signature}</span>
+            </header>
+          )}
           <div className="pb-stage">
-            <BouquetArt photos={photos} state={phase} />
+            <BouquetArt
+              photos={photos}
+              state={phase}
+              portraitKinds={presentation?.portraitKinds}
+            />
             <button
               className={`pb-hit ${holding ? "pb-holding" : ""}`}
               disabled={
@@ -246,9 +286,13 @@ export function PhotoBouquet({
             {phase === "loading"
               ? "Đang chuẩn bị bó hoa…"
               : phase === "flowers"
-                ? "Chạm vào bó hoa"
+                ? presentation
+                  ? "Chạm để hé lộ những gương mặt thân thương"
+                  : "Chạm vào bó hoa"
                 : phase === "ready"
-                  ? "Ấn giữ bó hoa"
+                  ? presentation
+                    ? "Ấn giữ bó hoa để mở lời chúc"
+                    : "Ấn giữ bó hoa"
                   : ""}
           </p>
           {loadError && (
@@ -266,7 +310,10 @@ export function PhotoBouquet({
               aria-label="Mở lá thư"
               onClick={() => setLetterOpen(true)}
             >
-              <EnvelopeFace occasion={gift.occasion} />
+              <EnvelopeFace
+                occasion={gift.occasion}
+                salutation={presentation?.envelopeTo}
+              />
             </button>
           )}
           <button
@@ -293,7 +340,11 @@ export function PhotoBouquet({
       {letterOpen && (
         <BouquetLetter
           gift={gift}
-          photo={usingSample ? sampleBouquetPhotos[3] : photos[0]}
+          photo={
+            presentation?.letterPhoto ||
+            (usingSample ? sampleBouquetPhotos[3] : photos[0])
+          }
+          salutation={presentation?.envelopeTo}
           onClose={() => setLetterOpen(false)}
         />
       )}

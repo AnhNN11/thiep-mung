@@ -23,10 +23,12 @@ export function BouquetArt({
   photos = sampleBouquetPhotos,
   state = "ready",
   onReady,
+  portraitKinds,
 }: {
   photos?: string[];
   state?: string;
   onReady?: () => void;
+  portraitKinds?: ("photo" | "cutout" | "flag")[];
 }) {
   const images = photos.length ? photos : sampleBouquetPhotos;
   return (
@@ -71,7 +73,7 @@ export function BouquetArt({
             100;
         return (
           <div
-            className={`pb-part pb-portrait ${/\/dlove\/(?:photos\/bouquet-|garden\/person-)/.test(images[i % images.length]) ? "is-cutout" : "is-photo"}`}
+            className={`pb-part pb-portrait is-${portraitKinds?.[i] || (/\/dlove\/(?:photos\/bouquet-|garden\/person-)/.test(images[i % images.length]) ? "cutout" : "photo")}`}
             key={`portrait-${i}`}
             style={
               {
