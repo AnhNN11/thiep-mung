@@ -41,6 +41,8 @@ Nguồn đọc đối chiếu tại `output/` đã loại khỏi Git; ứng dụ
 
 ## Tạo và lưu quà
 
+Thiệp Bloom `/dat` dành cho “Em yêu”, người gửi “Đạt”, dùng bộ sáu ảnh riêng tại `public/dedications/dat/`. Nội dung ở `lib/dat-gift.ts`; có nhạc mẫu Bloom, bướm, mưa ảnh và lá thư tự cuộn. Ảnh story được căn vùng texture để ẩn thanh giao diện khi bay, không thay đổi tệp gốc hoặc khuôn mặt.
+
 Thiệp riêng dành cho người yêu nằm tại `/gui-em`, người nhận “Em yêu”, người gửi “Anh”. Cấu hình và lời nhắn ở `lib/romantic-gift.ts`; mười ảnh đóng gói sẵn trong `public/dedications/gui-em/` để hoạt động trên Vercel. Sáu ảnh xuất hiện trong bó hoa, cả mười ảnh ở mưa kỷ niệm; có nhạc, bướm, lời chúc luân phiên và lá thư tự cuộn. Đường dẫn không được liệt kê trong danh mục và có metadata `noindex`.
 
 Bảng QR chibi sáu cô có tại `/20-10/qr`, tải được tranh PNG nền trong suốt và bảng PNG để in/gửi. Tạo lại bố cục từ tranh đã có bằng `node scripts/create-faculty-chibi-qr.mjs`, kiểm tra bằng `npm run verify:faculty`.

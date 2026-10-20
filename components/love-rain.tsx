@@ -17,6 +17,7 @@ export function LoveRain({
   direction = "down",
   hearts = true,
   appearance,
+  photoInsets,
 }: {
   started: boolean;
   paused: boolean;
@@ -25,6 +26,7 @@ export function LoveRain({
   direction?: "up" | "down";
   hearts?: boolean;
   appearance?: "tribute";
+  photoInsets?: Record<string, { top: number; bottom: number }>;
 }) {
   const mount = useRef<HTMLDivElement>(null),
     start = useRef(started),
@@ -216,6 +218,13 @@ export function LoveRain({
               return null;
             }
             texture.colorSpace = T.SRGBColorSpace;
+            const inset = photoInsets?.[src];
+            if (inset) {
+              const top = Math.max(0, Math.min(0.45, inset.top));
+              const bottom = Math.max(0, Math.min(0.45, inset.bottom));
+              texture.repeat.y = 1 - top - bottom;
+              texture.offset.y = bottom;
+            }
             texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
             textures.push(texture);
             return texture;
@@ -242,7 +251,7 @@ export function LoveRain({
           const texture = photoTextures[(row * 4 + col) % photoTextures.length];
           if (!texture) continue;
           const image = texture.image as HTMLImageElement;
-          const ratio = image.width / image.height;
+          const ratio = image.width / (image.height * texture.repeat.y);
           const geometry = new T.PlaneGeometry(
             ratio > 1 ? 10 : 10 * ratio,
             ratio > 1 ? 10 / ratio : 10,

@@ -1,5 +1,9 @@
 # Tài nguyên hình ảnh và âm thanh
 
+## Thiệp /dat
+
+`public/dedications/dat/photo-1.webp` đến `photo-6.webp`: sáu ảnh người dùng gửi ngày 20/10/2026, tối ưu từ bộ ảnh trong thư mục Đạt. Giữ nguyên nội dung/khuôn mặt, chỉ xoay EXIF và tối ưu WebP; không nhúng EXIF. Photo-5 là ảnh chụp story: vùng texture hiển thị trong mưa ảnh bỏ 12% trên và 13% dưới để giấu giao diện, không sửa tệp ảnh. Không dùng AI chỉnh ảnh. Nhạc dùng `dlove-original` như mẫu Bloom.
+
 ## Thiệp dành cho Em yêu
 
 `public/dedications/gui-em/photo-1.webp` đến `photo-10.webp`: mười ảnh người dùng gửi trong cuộc trò chuyện, giữ nội dung gốc, xoay EXIF khi cần và tối ưu WebP; không dùng AI chỉnh khuôn mặt, không nhúng EXIF vào ảnh xuất. Thiệp riêng `/gui-em` chọn ảnh 1, 4, 2, 8, 6, 10 vào sáu vị trí bó hoa, dùng toàn bộ mười ảnh trong mưa kỷ niệm. Nhạc dùng cùng track `dlove-original` của mẫu Bloom.

@@ -33,6 +33,7 @@ export type BouquetPresentation = {
   signature: string;
   messages: string[];
   rainPhotos?: string[];
+  rainPhotoInsets?: Record<string, { top: number; bottom: number }>;
   envelopeTo?: string;
   letterPhoto?: string;
   letterAutoScroll?: boolean;
@@ -224,6 +225,7 @@ export function PhotoBouquet({
         started={phase === "opening" || phase === "rain"}
         paused={letterOpen}
         photos={flyingPhotos}
+        photoInsets={presentation?.rainPhotoInsets}
         messages={
           presentation?.messages ||
           (usingSample

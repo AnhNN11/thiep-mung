@@ -1,0 +1,8 @@
+.dat-dedication .pb-portrait[data-portrait-index="1"] .pb-photo-frame > img {
+  transform: scale(1.65);
+  transform-origin: 51% 48%;
+}
+.dat-dedication .pb-portrait[data-portrait-index="2"] .pb-photo-frame > img {
+  transform: scale(1.65);
+  transform-origin: 54% 42%;
+}
